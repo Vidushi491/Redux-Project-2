@@ -16,5 +16,7 @@ export async function fetchVideos(query,per_page=15){
     params:{query,per_page},
     headers:{Authorization:PEXELS_KEY}
    })
-   return res.data
+   console.log(res);
+   
+//    return res.data
 }

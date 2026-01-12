@@ -1,0 +1,57 @@
+import { useDispatch, useSelector } from 'react-redux'
+import {fetchPhotos,fetchVideos} from '../api/mediaApi'
+import { setLoading,setError,setResults, } from '../redux/features/searchSlice'
+import { useEffect } from 'react'
+   
+
+const ResultGrid = () => {
+
+const dispatch = useDispatch()
+ const{query,results,loading,activeTab,error} =  useSelector((store)=>store.search)
+
+useEffect(function () {
+  const getData = async()=>{
+
+  try{
+    dispatch(setLoading())
+    let data = []
+  if(activeTab == 'photos'){
+    let response = await fetchPhotos(query)
+    data = response.results.map((item)=>({
+      id:item.id,
+      type:'photo',
+      thumbnail:item.urls.small,
+      title:item.alt_description,
+      src:item.urls.full
+
+    }))
+  }
+  if(activeTab == 'videos'){
+     let response = await fetchVideos(query)
+     data = response.videos.map((item)=>({
+      id:item.id,
+      type:'video',
+      title:item.user.name || 'video',
+      thumbnail:item.image,
+      src:item.video_files[0].link
+     }))
+  }
+  dispatchEvent(setResults(data))
+  }catch(err){
+    dispatch(setError(err))
+  }
+}
+  getData()
+}, [query, activeTab])
+if(error) return <h1>Error</h1>
+if(loading) return <h1>Loading...</h1>
+  return (
+    <div>
+      {results.map((item,idx)=>{({
+        return set
+      })}
+    </div>
+  )
+}
+
+export default ResultGrid

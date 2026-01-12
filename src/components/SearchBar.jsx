@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useDispatch }  from "react-redux"
 import { setQuery } from "../redux/features/searchSlice"
+import { fetchVideos } from "../api/mediaApi"
 
 const SearchBar = () => {
 
@@ -8,10 +9,10 @@ const SearchBar = () => {
 
     const dispatch = useDispatch()
 
-    const submitHandler = (e)=>{
+    const submitHandler = async (e)=>{
         e.preventDefault()
        dispatch(setQuery(text))
-
+         fetchVideos(text)
         setText('')
     }
      
@@ -24,7 +25,7 @@ const SearchBar = () => {
             <input 
             value={text}
             onChange={(e)=>{
-               setText
+               setText(e.target.value)
             }}
             required
             className=' w-full border-2 px-4 py-2 text-xl rounded outline-none'
