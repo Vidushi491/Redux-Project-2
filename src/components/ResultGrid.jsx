@@ -24,8 +24,8 @@ useEffect(function () {
       type:'photo',
       thumbnail:item.urls.small,
       title:item.alt_description,
-      src:item.urls.full
-
+      src:item.urls.full,
+      url:item.links.html
     }))
   }
   if(activeTab == 'videos'){
@@ -35,7 +35,8 @@ useEffect(function () {
       type:'video',
       title:item.user.name || 'video',
       thumbnail:item.image,
-      src:item.video_files[0].link
+      src:item.video_files[0].link,
+      url:item.url
      }))
   }
   dispatchEvent(setResults(data))
@@ -44,16 +45,17 @@ useEffect(function () {
   }
 }
   getData()
-}, [query, activeTab])
+}, [query, activeTab,dispatch])
 if(error) return <h1>Error</h1>
 if(loading) return <h1>Loading...</h1>
   return (
     <div className='flex justify-between w-full flex-wrap gap-5 overflow-auto px-5'>
-      {results.map((item, idx)=> {
+       {results.map((item, idx)=> {
         return <div key={idx}>
-          <ResultCard item ={item}/>
+         <ResultCard item={item}/>
         </div>
       })}
+    
     </div>
   )
 }
