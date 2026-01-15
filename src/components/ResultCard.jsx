@@ -1,10 +1,16 @@
-import React from 'react'
+import { addCollection } from '../redux/features/collectionSlice'
+import { useDispatch } from 'react-redux'
 
 
 
 const ResultCard = ({item}) => {
   const addToCollection = (item)=>{
+    
+  const dispatch = useDispatch()
 
+  const addToCollection = (item) =>{
+    dispatch(addToCollection(item))
+  }
   }
   return (
     <div className='w-[18vw] relative h-80 bg-white rounded-xl overflow-hidden'>
@@ -12,7 +18,6 @@ const ResultCard = ({item}) => {
         href={item.url}>
 
          {item.type =='photo'?<img className='h-full w-full object-cover object-center' src={item.src}alt="" />:''}
-
         {item.type == 'video'? <video className='h-full w-full object-cover objrct-center' autoPlay loop muted src={item.src}></video> :''}
 
        </a>

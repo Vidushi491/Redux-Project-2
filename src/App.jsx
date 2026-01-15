@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom"
 import Navbar from "./components/Navbar"
 import CollectionPage from "./pages/CollectionPage"
 import HomePage from "./pages/HomePage"
-
+import { ToastContainer, toast } from 'react-toastify';
 const App = () => {
 
   return (
@@ -18,6 +18,7 @@ const App = () => {
         element={<CollectionPage/>}/>
       </Routes>
 
+    <ToastContainer/>
     </div>
   )
 }
