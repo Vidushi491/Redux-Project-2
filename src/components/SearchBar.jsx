@@ -1,7 +1,6 @@
 import { useState } from "react"
 import { useDispatch }  from "react-redux"
 import { setQuery } from "../redux/features/searchSlice"
-import { fetchVideos } from "../api/mediaApi"
 
 const SearchBar = () => {
 
@@ -9,18 +8,17 @@ const SearchBar = () => {
 
     const dispatch = useDispatch()
 
-    const submitHandler = async (e)=>{
+    const submitHandler = (e) => {
         e.preventDefault()
        dispatch(setQuery(text))
-         fetchVideos(text)
         setText('')
     }
      
   return (
     <div>
-        <form onSubmit={(e)=>{
+        <form onSubmit={(e) => {
             submitHandler(e)
-        }} className='flex bg-gray-900 gap-5 p-10'>
+        }} className='flex bg-(--c1) gap-5 p-10'>
 
             <input 
             value={text}
