@@ -17,8 +17,8 @@ const clearAll = () => {
     </h2>
     <button onClick={()=>{
         clearAll()
-    }} className="active:scale-95 transition cursor-pointer bg-(--c1) px-8 py-3 text-base font-medium rounded">Clear Collection</button>
-   </div>:<h2 className="text-2xl py-10 text-gray-300 text-center font-medium">
+    }} className="active:scale-95 transition cursor-pointer bg-(--c2) px-8 py-3 text-xl font-bold text-(--c1) rounded">Clear Collection</button>
+   </div>:<h2 className="text-2xl py-10 bg-(--c1) text-center font-medium">
        Collection is Empty
     </h2>}
     

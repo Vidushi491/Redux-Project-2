@@ -6,6 +6,7 @@ import ResultCard from './ResultCard'
    
 
 const ResultGrid = () => {
+// console.log(ResultCard);
 
 const dispatch = useDispatch()
  const{query,results,loading,activeTab,error} =  useSelector((store) => store.search)

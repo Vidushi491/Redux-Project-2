@@ -6,7 +6,7 @@ import { ToastContainer, toast } from 'react-toastify';
 const App = () => {
 
   return (
-    <div className='min-h-screen text-white w-full bg-(--c1)'>
+    <div className='min-h-screen text-(--c2) w-full bg-(--c1)'>
 
     <Navbar/>
     
